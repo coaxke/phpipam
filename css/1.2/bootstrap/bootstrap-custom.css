@@ -1264,6 +1264,15 @@ table.vlans tr.change td {
 .table.ipaddresses td.narrow {
 	width: 1px;
 }
+.table.ipaddresses th.QuickConnect,
+.table.ipaddresses td.QuickConnect {
+
+	padding-left: 0px;
+	padding-right: 3px;
+	width: 20px;
+	white-space: nowrap;
+
+}
 .table.ipaddresses th.btn-actions,
 .table.ipaddresses td.btn-actions {
 /* 	width: 1px; */

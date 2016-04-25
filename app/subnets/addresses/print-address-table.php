@@ -139,6 +139,9 @@ else 				{ print _("IP addresses belonging to ALL nested subnets"); }
 	if(in_array('port', $selected_ip_fields)) 	{ print "<th class='hidden-xs hidden-sm hidden-md'><span rel='tooltip' title='"._('Sort by port')."'>"._('Port')."</span</th>"; }
 	# owner
 	if(in_array('owner', $selected_ip_fields)) 	{ print "<th class='hidden-xs hidden-sm'><span rel='tooltip' title='"._('Sort by owner')."'>"._('Owner')."</span</th>"; }
+	
+	#Quick Connect
+	print "<th class='QuickConnect'>Quick Connect</th>";
 
 	# custom fields
 	if(sizeof($custom_fields) > 0) {
@@ -379,6 +382,25 @@ else {
 
 				# print owner
 				if(in_array('owner', $selected_ip_fields)) 				{ print "<td class='hidden-xs hidden-sm'>".$addresses[$n]->owner."</td>"; }
+				
+				#print Quick Connect Icon
+				if(in_array('QuickConnect', $selected_ip_fields))
+				{
+					$ConnectAddress = $Subnets->transform_to_dotted($addresses[$n]->ip_addr);
+					$QuickConnect = $addresses[$n]->QuickConnect;
+					if($QuickConnect == 1 ) //RDP
+					{
+						print "<td class='QuickConnect'><A HREF=\"/app/tools/quick-connect/rdp.php??autoconnect=1&full_address=$ConnectAddress&startfullscreen=1&screen_mode_id=2&name=$ConnectAddress\"><img src=\"http://megaicons.net/static/img/icons_sizes/486/2080/16/network-remote-desktop-icon.png\" /></A></td>";
+					}
+					elseif ($QuickConnect ==2) //SSH
+					{
+						print "<td class='QuickConnect'><A HREF=\"ssh://$ConnectAddress\"><img src=\"http://ezilla-nchc.sourceforge.net/doc_files/usr_ssh.jpg\" /></A></td>";
+					}
+					else
+					{
+						print "<td class='QuickConnect'></td>";
+					}
+				}
 
 				# print custom fields
 				if(sizeof($custom_fields) > 0) {

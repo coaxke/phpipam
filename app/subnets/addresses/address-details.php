@@ -188,6 +188,16 @@ if(sizeof($address)>1) {
     		print "	<td>"._('Never')."</td>";
     	}
     	print "</tr>";
+		
+		#Quick Connect
+		print "<tr>";
+		print " <th>"._('Quick Connect')."</th>";
+		if($address['QuickConnect'] == 1) {
+			print "<td>RDP: <A HREF=\"/app/tools/quick-connect/rdp.php??autoconnect=1&full_address=$address[ip]&startfullscreen=1&screen_mode_id=2&name=$address[ip]\"><img src=\"http://megaicons.net/static/img/icons_sizes/486/2080/16/network-remote-desktop-icon.png\" /></td>";
+		} else {
+			print "<td> somethings wrong fetching data from db </td>";
+		}
+		print "</tr>";
 
 
     	# availability

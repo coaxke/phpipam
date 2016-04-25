@@ -37,6 +37,7 @@ CREATE TABLE `ipaddresses` (
   `NAT` VARCHAR(64)  NULL  DEFAULT NULL,
   `firewallAddressObject` VARCHAR(100) NULL DEFAULT NULL,
   `editDate` TIMESTAMP  NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `QuickConnect` INT(2) NYLL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `sid_ip_unique` (`ip_addr`,`subnetId`),
   KEY `subnetid` (`subnetId`)
@@ -180,7 +181,7 @@ CREATE TABLE `settings` (
 /* insert default values */
 INSERT INTO `settings` (`id`, `siteTitle`, `siteAdminName`, `siteAdminMail`, `siteDomain`, `siteURL`, `domainAuth`, `enableIPrequests`, `enableVRF`, `enableDNSresolving`, `version`, `donate`, `IPfilter`, `vlanDuplicate`, `subnetOrdering`, `visualLimit`)
 VALUES
-	(1, 'phpipam IP address management', 'Sysadmin', 'admin@domain.local', 'domain.local', 'http://yourpublicurl.com', 0, 0, 0, 0, '1.1', 0, 'mac;owner;state;switch;note;firewallAddressObject', 1, 'subnet,asc', 24);
+	(1, 'phpipam IP address management', 'Sysadmin', 'admin@domain.local', 'domain.local', 'http://yourpublicurl.com', 0, 0, 0, 0, '1.1', 0, 'mac;owner;state;switch;note;firewallAddressObject;QuickConnect', 1, 'subnet,asc', 24);
 
 
 # Dump of table settingsDomain
