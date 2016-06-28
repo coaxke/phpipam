@@ -346,8 +346,8 @@ function validate_mac (ip, mac, sectionId, vlanId, id) {
 		print '</tr>'. "\n";
 	}
 	?>
+	
 	<!-- Quick Connect -->
-
 	<?php
 	#fetch all quick-connect states
 	$quickconnect_types = (array) $Addresses->quickconnect_types_fetch();
@@ -357,20 +357,14 @@ function validate_mac (ip, mac, sectionId, vlanId, id) {
 		print '	<td>'. "\n";
 		print '		<select name="QuickConnect" '.$delete.' class="ip_addr form-control input-sm input-w-auto">'. "\n";
 		#printout
-		foreach($quickconnect_types as $qqt=>$qqtype) {
-			
-			
-			//////TODO - fix all this shit! :(
-		}
-		
-		
-		print "<option value='test' selected>test</option>";
-		
+		foreach($quickconnect_types as $q=>$qqtype) {
+			if($address['QuickConnect']==$q)	{print "<option value='$q' selected>"._($qqtype['type'])."</option>"; }
+			else								{print "<option value='$q'>"._($qqtype['type'])."</option>"; }	
+
+		}		
 		print '		</select>'. "\n";
 		print '	</td>'. "\n";
 		print '</tr>'. "\n";	
-		
-
 	?>
 	
 	<!-- state -->
