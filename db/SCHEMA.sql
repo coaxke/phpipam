@@ -598,7 +598,25 @@ VALUES
 	(2, 'Used', 0, '#a9c9a4', '#ffffff', 'No', 'Yes'),
 	(3, 'Reserved', 1, '#9ac0cd', '#ffffff', 'No', 'Yes'),
 	(4, 'DHCP', 1, '#c9c9c9', '#ffffff', 'Yes', 'Yes');
+    
+# ------------------------------------------------------------
+DROP TABLE IF EXISTS `quickConnectTags`;
 
+CREATE TABLE `quickConnectTags` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(32) DEFAULT NULL,
+  `protocolprefix` varchar(20),
+  `iconpath` varchar(150),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/* insert default values */
+INSERT INTO `quickConnectTags` (`id`, `type`, `protocolprefix`, `iconpath`)
+VALUES
+	(1, 'none', '', ''),
+    (2, 'rdp', '', ''),
+	(3, 'ssh', 'ssh://', ''),
+    (4, 'http', 'http://', ''),
+    (5, 'https', 'https://', '');
 
 # Dump of table firewallZones
 # ------------------------------------------------------------

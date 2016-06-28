@@ -24,6 +24,14 @@ class Addresses extends Common_functions {
 	 * @access public
 	 */
 	public $address_types = array();
+    
+    /**
+	 * Quick Connect types array
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $quickconnect_types = array();
 
 	/**
 	 * Mail changelog or not
@@ -226,6 +234,45 @@ class Addresses extends Common_functions {
 			return $type;
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	* @qucikconnect methods
+	* -------------------------------
+	*/
+
+	/**
+	 * Returns array of quickconnect types.
+	 *
+	 * @access public
+	 * @return array of quickconnect types and parameters
+	 */
+    public function quickconnect_types_fetch() {
+        #fetch
+        $qconnecttypes = $this->fetch_all_objects ("quickConnectTags", "id");
+        
+        #save to array
+        $qconnect_types_out = array();
+        foreach($qconnecttypes as $qqt) {
+            $qconnect_types_out[$qqt->id] = (array) $qqt;
+        }
+        #save
+        $this->quickconnect_types = $$qconnect_types_out;
+        
+        #return
+        return $qconnect_types_out;            
+    }
 
 
 
